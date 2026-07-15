@@ -7,102 +7,78 @@
 
 <style>
 body{
-    font-family: Arial, sans-serif;
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-    background:#f4f4f4;
+  font-family:Arial,sans-serif;
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
 }
 
-h1{
-    color:#006400;
-}
-
-#searchBox{
-    width:100%;
-    padding:12px;
-    font-size:16px;
-    border:1px solid #ccc;
-    border-radius:5px;
+input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
 }
 
 .card{
-    background:white;
-    padding:15px;
-    margin-top:10px;
-    border-radius:8px;
-    box-shadow:0 1px 3px rgba(0,0,0,.15);
-}
-
-.name{
-    font-size:18px;
-    font-weight:bold;
-    color:#006400;
+  border:1px solid #ddd;
+  padding:10px;
+  margin-top:10px;
+  border-radius:6px;
 }
 </style>
-
 </head>
 
 <body>
 
 <h1>Eden Chess Player Search</h1>
 
-<input
-id="searchBox"
-type="text"
-placeholder="Search by Name, ChessaID, FIDE ID or School">
+<input id="search" placeholder="Search by Name, ChessaID, FIDE ID or School">
 
 <div id="results"></div>
 
 <script>
 
-let data = [];
+let players=[];
 
-fetch('players.json')
-.then(response => response.json())
-.then(players => {
-    data = players;
-});
+fetch('players.csv')
+.then(response => response.text())
+.then(text => {
 
-document.getElementById("searchBox")
-.addEventListener("keyup", function(){
+    const rows = text.trim().split('\n');
 
-    const search = this.value.toLowerCase();
+    const headers = rows[0].split(',');
 
-    const matches = data.filter(player =>
-        JSON.stringify(player)
-        .toLowerCase()
-        .includes(search)
-    );
+    players = rows.slice(1).map(row => {
 
-    let html = "";
+        const values = row.split(',');
 
-    matches.slice(0,50).forEach(player => {
+        let player = {};
 
-        html += `
-        <div class="card">
+        headers.forEach((header,index)=>{
+            player[header.trim()] = values[index];
+        });
 
-            <div class="name">${player.Name}</div>
-
-            <p>
-            <strong>ChessaID:</strong> ${player.ChessaID}<br>
-            <strong>FIDE ID:</strong> ${player.FIDE_ID}<br>
-            <strong>Gender:</strong> ${player.Gender}<br>
-            <strong>Age Group:</strong> ${player.Age_Group}<br>
-            <strong>School/Club:</strong> ${player["School/Club"]}<br>
-            <strong>SA Arbiter:</strong> ${player.SA_Arbiter}<br>
-            <strong>FIDE Arbiter:</strong> ${player.FIDE_Arbiter}<br>
-            <strong>Main:</strong> ${player.Main}<br>
-            <strong>Standard:</strong> ${player.Standard}<br>
-            <strong>Rapid:</strong> ${player.Rapid}<br>
-            <strong>Blitz:</strong> ${player.Blitz}
-            </p>
-
-        </div>
-        `;
+        return player;
     });
 
-    document.getElementById("results").innerHTML = html;
+});
+
+document.getElementById('search').addEventListener('keyup', function(){
+
+    const term = this.value.toLowerCase();
+
+    const matches = players.filter(player =>
+        JSON.stringify(player).toLowerCase().includes(term)
+    );
+
+    document.getElementById('results').innerHTML =
+        matches.slice(0,50).map(player => `
+            <div class="card">
+                <strong>${player.Name || ''}</strong><br>
+                ChessaID: ${player.ChessaID || ''}<br>
+                FIDE ID: ${player.FIDE_ID || ''}
+            </div>
+        `).join('');
 
 });
 
