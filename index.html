@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eden Chess Player Search</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+    background:#f4f4f4;
+}
+
+h1{
+    color:#006400;
+}
+
+#searchBox{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin-top:10px;
+    border-radius:8px;
+    box-shadow:0 1px 3px rgba(0,0,0,.15);
+}
+
+.name{
+    font-size:18px;
+    font-weight:bold;
+    color:#006400;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Eden Chess Player Search</h1>
+
+<input
+id="searchBox"
+type="text"
+placeholder="Search by Name, ChessaID, FIDE ID or School">
+
+<div id="results"></div>
+
+<script>
+
+let data = [];
+
+fetch('players.json')
+.then(response => response.json())
+.then(players => {
+    data = players;
+});
+
+document.getElementById("searchBox")
+.addEventListener("keyup", function(){
+
+    const search = this.value.toLowerCase();
+
+    const matches = data.filter(player =>
+        JSON.stringify(player)
+        .toLowerCase()
+        .includes(search)
+    );
+
+    let html = "";
+
+    matches.slice(0,50).forEach(player => {
+
+        html += `
+        <div class="card">
+
+            <div class="name">${player.Name}</div>
+
+            <p>
+            <strong>ChessaID:</strong> ${player.ChessaID}<br>
+            <strong>FIDE ID:</strong> ${player.FIDE_ID}<br>
+            <strong>Gender:</strong> ${player.Gender}<br>
+            <strong>Age Group:</strong> ${player.Age_Group}<br>
+            <strong>School/Club:</strong> ${player["School/Club"]}<br>
+            <strong>SA Arbiter:</strong> ${player.SA_Arbiter}<br>
+            <strong>FIDE Arbiter:</strong> ${player.FIDE_Arbiter}<br>
+            <strong>Main:</strong> ${player.Main}<br>
+            <strong>Standard:</strong> ${player.Standard}<br>
+            <strong>Rapid:</strong> ${player.Rapid}<br>
+            <strong>Blitz:</strong> ${player.Blitz}
+            </p>
+
+        </div>
+        `;
+    });
+
+    document.getElementById("results").innerHTML = html;
+
+});
+
+</script>
+
+</body>
+</html>
