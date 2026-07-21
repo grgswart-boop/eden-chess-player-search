@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Chess Players in Eden</title>
 
 <style>
+
 body{
     font-family:Arial,sans-serif;
     max-width:1000px;
@@ -22,7 +25,8 @@ input{
 
 button{
     padding:8px 12px;
-    margin-top:8px;
+    margin-top:5px;
+    margin-right:5px;
     cursor:pointer;
 }
 
@@ -37,21 +41,46 @@ button{
     margin-top:10px;
     font-weight:bold;
 }
+
+.dark-mode{
+    background-color:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1e1e1e;
+    border:1px solid #444;
+}
+
+.dark-mode input{
+    background:#2d2d2d;
+    color:white;
+    border:1px solid #666;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>Chess Players in Eden</h1>
+<h1>♟️ Chess Players in Eden</h1>
 
-<p><small>
+<p>
+<small>
 Unofficial chess player search website for the Eden region.<br>
 Not affiliated with Eden Chess Union.
-</small></p>
+</small>
+</p>
 
-<input id="search" placeholder="Search by Name, ChessaID, FIDE ID or School">
+<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-<button onclick="clearSearch()">Clear Search</button>
+<br><br>
+
+<input id="search"
+placeholder="Search by Name, ChessaID, FIDE ID or School">
+
+<button onclick="clearSearch()">🧹 Clear Search</button>
 
 <div id="counter"></div>
 
@@ -59,17 +88,21 @@ Not affiliated with Eden Chess Union.
 
 <script>
 
-let players=[];
+let players = [];
 
 function copyText(text){
     navigator.clipboard.writeText(text);
-    alert("Copied ChessaID: " + text);
+    alert("Copied: " + text);
 }
 
 function clearSearch(){
-    document.getElementById('search').value='';
-    document.getElementById('results').innerHTML='';
-    document.getElementById('counter').innerHTML='';
+    document.getElementById('search').value = '';
+    document.getElementById('results').innerHTML = '';
+    document.getElementById('counter').innerHTML = '';
+}
+
+function toggleDarkMode(){
+    document.body.classList.toggle('dark-mode');
 }
 
 fetch('players.csv')
@@ -86,11 +119,12 @@ fetch('players.csv')
 
         let player = {};
 
-        headers.forEach((header,index)=>{
+        headers.forEach((header,index) => {
             player[header.trim()] = values[index];
         });
 
         return player;
+
     });
 
 });
@@ -100,8 +134,8 @@ document.getElementById('search').addEventListener('keyup', function(){
     const term = this.value.toLowerCase();
 
     if(term === ''){
-        document.getElementById('results').innerHTML='';
-        document.getElementById('counter').innerHTML='';
+        document.getElementById('results').innerHTML = '';
+        document.getElementById('counter').innerHTML = '';
         return;
     }
 
@@ -113,13 +147,16 @@ document.getElementById('search').addEventListener('keyup', function(){
         matches.length + ' player(s) found';
 
     if(matches.length === 0){
+
         document.getElementById('results').innerHTML =
             '<div class="card">No results found.</div>';
+
         return;
     }
 
     document.getElementById('results').innerHTML =
         matches.slice(0,50).map(player => `
+
             <div class="card">
 
                 <strong>${player.DisplayName || ''}</strong><br>
@@ -131,10 +168,15 @@ document.getElementById('search').addEventListener('keyup', function(){
                 School/Club: ${player["School/Club"] || ''}<br><br>
 
                 <button onclick="copyText('${player.ChessaID}')">
-                    Copy ChessaID
+                    📋 Copy ChessaID
+                </button>
+
+                <button onclick="copyText('${player.FIDE_ID}')">
+                    📋 Copy FIDE ID
                 </button>
 
             </div>
+
         `).join('');
 
 });
