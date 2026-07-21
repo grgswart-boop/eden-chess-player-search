@@ -91,9 +91,22 @@ placeholder="Search by Name, ChessaID, FIDE ID or School">
 let players = [];
 
 function copyText(text){
+
     navigator.clipboard.writeText(text);
-    alert("Copied: " + text);
+
+    const msg = document.getElementById('message');
+
+    msg.className = 'success';
+
+    msg.style.display = 'block';
+
+    msg.innerHTML = '✅ Copied: ' + text;
+
+    setTimeout(() => {
+        msg.style.display = 'none';
+    }, 3000);
 }
+`
 
 function clearSearch(){
     document.getElementById('search').value = '';
