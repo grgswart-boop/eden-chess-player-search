@@ -77,15 +77,15 @@ document.getElementById('search').addEventListener('keyup', function(){
     );
 
     document.getElementById('results').innerHTML =
-        matches.slice(0,50).map(player => `
-            <div class="card">
-                <strong>${player.DisplayName || ''}</strong><br>
-ChessaID: ${player.ChessaID || ''}<br>
-FIDE ID: ${player.FIDE_ID || ''}<br>
-School/Club: ${player["School/Club"] || ''}
-            </div>
-        `).join('');
-
+    matches.slice(0,50).map(player => `
+        <div class="card">
+            <strong>${player.DisplayName || ''}</strong><br>
+            ChessaID: ${player.ChessaID || ''}<br>
+            FIDE ID: ${player.FIDE_ID || ''}<br>
+            School/Club: ${player["School/Club"] || ''}
+        </div>
+    `).join('');
+  
 });
 
 </script>
