@@ -7,6 +7,21 @@
 
 <title>Chess Players in Eden</title>
 
+<!-- Google tag (gtag.js) -->
+https://www.googletagmanager.com/gtag/js?id=G-E8MRS2R9ENscript>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-E8MRS2R9EN');
+</script>
+
 <style>
 
 body{
@@ -90,7 +105,8 @@ Not affiliated with Eden Chess Union.
 
 <br><br>
 
-<input id="search"
+<input
+id="search"
 placeholder="Search by Name, ChessaID, FIDE ID or School">
 
 <button onclick="clearSearch()">🧹 Clear Search</button>
@@ -120,6 +136,7 @@ function copyText(text){
     setTimeout(() => {
         msg.style.display = 'none';
     }, 3000);
+
 }
 
 function clearSearch(){
@@ -151,7 +168,9 @@ fetch('players.csv')
         let player = {};
 
         headers.forEach((header,index) => {
+
             player[header.trim()] = values[index];
+
         });
 
         return player;
@@ -170,6 +189,7 @@ document.getElementById('search').addEventListener('keyup', function(){
         document.getElementById('counter').innerHTML = '';
 
         return;
+
     }
 
     const matches = players.filter(player =>
@@ -185,9 +205,11 @@ document.getElementById('search').addEventListener('keyup', function(){
             '<div class="card">No results found.</div>';
 
         return;
+
     }
 
     document.getElementById('results').innerHTML =
+
         matches.slice(0,50).map(player => `
 
             <div class="card">
@@ -217,4 +239,5 @@ document.getElementById('search').addEventListener('keyup', function(){
 </script>
 
 </body>
+
 </html>
