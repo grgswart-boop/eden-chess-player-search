@@ -44,6 +44,10 @@ Not affiliated with Eden Chess Union.
 <script>
 
 let players=[];
+  function copyText(text) {
+    navigator.clipboard.writeText(text);
+    alert("Copied: " + text);
+}
 
 fetch('players.csv')
 .then(response => response.text())
