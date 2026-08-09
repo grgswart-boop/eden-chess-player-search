@@ -46,10 +46,18 @@ button{
 }
 
 .card{
+    background:white;
     border:1px solid #ddd;
-    padding:10px;
-    margin-top:10px;
-    border-radius:6px;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 #counter{
@@ -76,8 +84,10 @@ button{
 }
 
 .dark-mode .card{
-    background:#1e1e1e;
+    background:#1f1f1f;
     border:1px solid #444;
+    color:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.5);
 }
 
 .dark-mode input{
@@ -95,6 +105,17 @@ button{
 .dark-mode #loading{
     background:#1e1e1e;
     border:1px solid #444;
+}
+
+  .player-name{
+    font-size:20px;
+    font-weight:bold;
+    color:#0066cc;
+    margin-bottom:10px;
+}
+
+.dark-mode .player-name{
+    color:#4da3ff;
 }
 
 </style>
@@ -233,7 +254,9 @@ document.getElementById('search').addEventListener('keyup', function(){
 
             <div class="card">
 
-                <strong>${player.DisplayName || ''}</strong><br>
+                <div class="player-name">
+    ♟️ ${player.DisplayName || ''}
+</div>
 
                 Birth Year: ${player.BirthYear || ''}<br>
 
