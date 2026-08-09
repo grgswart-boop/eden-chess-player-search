@@ -266,12 +266,16 @@ document.getElementById('search').addEventListener('keyup', function(){
 
                 School/Club: ${player["School/Club"] || ''}<br><br>
 
-                <button onclick="copyText('${player.ChessaID}')">
-                    📋 Copy ChessaID
+                <button onclick="copyText('${player.DisplayName}')">
+                👤 Copy Name
                 </button>
 
+                <button onclick="copyText('${player.ChessaID}')">
+                📋 Copy ChessaID
+                  </button>
+
                 <button onclick="copyText('${player.FIDE_ID}')">
-                    📋 Copy FIDE ID
+                📋 Copy FIDE ID
                 </button>
 
             </div>
