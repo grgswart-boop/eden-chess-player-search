@@ -2,23 +2,23 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Chess Players in Eden</title>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8MRS2R9EN"></script>
 
 <script>
 window.dataLayer = window.dataLayer || [];
 
-function gtag() {
+function gtag(){
     dataLayer.push(arguments);
 }
 
 gtag('js', new Date());
-
 gtag('config', 'G-E8MRS2R9EN');
 </script>
 
@@ -29,23 +29,6 @@ body{
     max-width:1000px;
     margin:auto;
     padding:20px;
-}
-
-.dark-mode{
-    background:#121212;
-    color:white;
-}
-
-.dark-mode .card{
-    background:#1e1e1e;
-    border:1px solid #444;
-}
-
-.dark-mode a{
-    color:#4da3ff;
-}
-
-</style>
 }
 
 input{
@@ -60,6 +43,8 @@ button{
     margin-top:5px;
     margin-right:5px;
     cursor:pointer;
+    border:none;
+    border-radius:5px;
 }
 
 .card{
@@ -69,7 +54,6 @@ button{
     padding:15px;
     margin-top:12px;
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    transition:transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover{
@@ -95,23 +79,7 @@ button{
     border:1px solid #c3e6cb;
 }
 
-.dark-mode{
-    background-color:#121212;
-    color:white;
-}
-
-.dark-mode .card{
-    background:#1f1f1f;
-    border:1px solid #444;
-    color:white;
-    box-shadow:0 2px 8px rgba(0,0,0,0.5);
-}
-
-.dark-mode input{
-    background:#2d2d2d;
-    color:white;
-    border:1px solid #666;
-}#loading{
+#loading{
     margin-top:10px;
     padding:10px;
     background:#f0f0f0;
@@ -119,19 +87,42 @@ button{
     font-weight:bold;
 }
 
-.dark-mode #loading{
-    background:#1e1e1e;
-    border:1px solid #444;
-}
-
-  .player-name{
+.player-name{
     font-size:20px;
     font-weight:bold;
     color:#0066cc;
     margin-bottom:10px;
 }
 
+/* Dark Mode */
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+    color:white;
+}
+
+.dark-mode input{
+    background:#2d2d2d;
+    color:white;
+    border:1px solid #666;
+}
+
+.dark-mode #loading{
+    background:#1e1e1e;
+    border:1px solid #444;
+}
+
 .dark-mode .player-name{
+    color:#4da3ff;
+}
+
+.dark-mode a{
     color:#4da3ff;
 }
 
@@ -150,7 +141,6 @@ Player Search • Tournament Calendar
 </small>
 </p>
 
-<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
 <button onclick="window.open('https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__gSaTpNUMFhBMlNJSVdYRklQQzEzMUZJTlZFSFMzNC4u','_blank')">
     🏆 Tournament Entry
 </button>
