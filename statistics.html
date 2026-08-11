@@ -2,10 +2,11 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Eden Chess Statistics</title>
+<title>Statistics</title>
 
 <style>
 
@@ -25,12 +26,6 @@ body{
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
-.stat{
-    font-size:24px;
-    font-weight:bold;
-    color:#0066cc;
-}
-
 .dark-mode{
     background:#121212;
     color:white;
@@ -41,38 +36,7 @@ body{
     border:1px solid #444;
 }
 
-.dark-mode .stat{
-    color:#4da3ff;
-}
-
-.dark-mode a{
-    color:#4da3ff;
-}
-
 </style>
-
-<script>
-
-function toggleDarkMode(){
-
-    document.body.classList.toggle('dark-mode');
-
-    localStorage.setItem(
-        'darkMode',
-        document.body.classList.contains('dark-mode')
-    );
-
-}
-
-window.onload = function(){
-
-    if(localStorage.getItem('darkMode') === 'true'){
-        document.body.classList.add('dark-mode');
-    }
-
-};
-
-</script>
 
 </head>
 
@@ -80,37 +44,8 @@ window.onload = function(){
 
 <h1>📊 Eden Chess Statistics</h1>
 
-<button onclick="toggleDarkMode()">
-🌙 Dark Mode
-</button>
-
-<div class="card">
-    <h2>Player Database</h2>
-
-    <div class="stat">1,842</div>
-    Total Players
-</div>
-
-<div class="card">
-    <h2>FIDE Players</h2>
-
-    <div class="stat">205</div>
-    Players with FIDE IDs
-</div>
-
-<div class="card">
-    <h2>Schools / Clubs</h2>
-
-    <div class="stat">37</div>
-    Active Schools and Clubs
-</div>
-
-<div class="card">
-    <h2>Interesting Facts</h2>
-
-    🏫 Largest School: George High School<br>
-    ♟️ Most Common Birth Year: 2013<br>
-    🌍 Highest Number of FIDE Players: Example Club
+<div id="stats" class="card">
+Loading statistics...
 </div>
 
 <br>
@@ -118,6 +53,25 @@ window.onload = function(){
 <a href="index.html">
 ← Return to Home Page
 </a>
+
+<script>
+
+fetch('players.csv')
+.then(response => response.text())
+.then(text => {
+
+    const rows = text.trim().split('\n');
+
+    const totalPlayers = rows.length - 1;
+
+    document.getElementById('stats').innerHTML = `
+        <h2>♟️ Total Players</h2>
+        <h1>${totalPlayers}</h1>
+    `;
+
+});
+
+</script>
 
 </body>
 </html>
