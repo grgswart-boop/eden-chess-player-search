@@ -56,22 +56,68 @@ Loading statistics...
 
 <script>
 
+
 fetch('players.csv')
 .then(response => response.text())
 .then(text => {
 
     const rows = text.trim().split('\n');
 
-    const totalPlayers = rows.length - 1;
+    const headers = rows[0].split(',');
+
+    const players = rows.slice(1).map(row => {
+
+        const values = row.split(',');
+
+        let player = {};
+
+        headers.forEach((header,index) => {
+            player[header.trim()] = values[index];
+        });
+
+        return player;
+
+    });
+
+    // Total Players
+    const totalPlayers = players.length;
+
+    // Count FIDE players
+    const fidePlayers = players.filter(player =>
+        player.FIDE_ID &&
+        player.FIDE_ID.trim() !== ''
+    ).length;
+
+    // Count unique Schools/Clubs
+    const schools = new Set();
+
+    players.forEach(player => {
+
+        const school = player["School/Club"];
+
+        if(school && school.trim() !== ''){
+            schools.add(school.trim());
+        }
+
+    });
 
     document.getElementById('stats').innerHTML = `
-        <h2>♟️ Total Players</h2>
-        <h1>${totalPlayers}</h1>
+
+        <div class="card">
+            <h2>♟️ Total Players</h2>
+            <h1>${totalPlayers}</h1>
+        </div>
+
+        <div class="card">
+            <h2>🌍 Players with FIDE IDs</h2>
+            <h1>${fidePlayers}</h1>
+        </div>
+
+        <div class="card">
+            <h2>🏫 Schools / Clubs</h2>
+            <h1>${schools.size}</h1>
+        </div>
+
     `;
 
 });
-
-</script>
-
-</body>
-</html>
