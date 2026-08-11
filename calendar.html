@@ -26,6 +26,20 @@ body{
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+button{
+    padding:8px 12px;
+    margin-top:5px;
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+}
+
 .dark-mode{
     background:#121212;
     color:white;
@@ -38,7 +52,16 @@ body{
 }
 
 .dark-mode a{
-    color:#4>
+    color:#4da3ff;
+}
+
+.dark-mode iframe{
+    background:white;
+}
+
+</style>
+
+<script>
 
 function toggleDarkMode(){
 
@@ -67,8 +90,16 @@ window.onload = function(){
 
 <h1>📅 Eden Tournament Calendar</h1>
 
+<p>
+View upcoming tournaments and the full Eden Chess calendar.
+</p>
+
 <button onclick="toggleDarkMode()">
 🌙 Dark Mode
+</button>
+
+<button onclick="window.location.href='index.html'">
+🏠 Home
 </button>
 
 <h2>🏆 Upcoming Tournaments</h2>
@@ -94,7 +125,7 @@ window.onload = function(){
 <h2>📆 Full Tournament Calendar</h2>
 
 <p>
-View all upcoming Eden Chess tournaments below.
+All upcoming Eden Chess events are shown below.
 </p>
 
 <iframe
