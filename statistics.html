@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Eden Chess Statistics</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat{
+    font-size:24px;
+    font-weight:bold;
+    color:#0066cc;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+}
+
+.dark-mode .stat{
+    color:#4da3ff;
+}
+
+.dark-mode a{
+    color:#4da3ff;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
+
+</script>
+
+</head>
+
+<body>
+
+<h1>📊 Eden Chess Statistics</h1>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+<div class="card">
+    <h2>Player Database</h2>
+
+    <div class="stat">1,842</div>
+    Total Players
+</div>
+
+<div class="card">
+    <h2>FIDE Players</h2>
+
+    <div class="stat">205</div>
+    Players with FIDE IDs
+</div>
+
+<div class="card">
+    <h2>Schools / Clubs</h2>
+
+    <div class="stat">37</div>
+    Active Schools and Clubs
+</div>
+
+<div class="card">
+    <h2>Interesting Facts</h2>
+
+    🏫 Largest School: George High School<br>
+    ♟️ Most Common Birth Year: 2013<br>
+    🌍 Highest Number of FIDE Players: Example Club
+</div>
+
+<br>
+
+<a href="index.html">
+← Return to Home Page
+</a>
+
+</body>
+</html>
