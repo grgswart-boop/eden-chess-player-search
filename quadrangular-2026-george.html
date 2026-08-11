@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Quadrangular 2026 George</title>
+<title>Tournament Results Archive</title>
 
 <style>
 
@@ -14,6 +14,19 @@ body{
     max-width:1000px;
     margin:auto;
     padding:20px;
+}
+
+.card{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    margin-top:10px;
+}
+
+a{
+    text-decoration:none;
+    color:#0066cc;
+    font-weight:bold;
 }
 
 .dark-mode{
@@ -32,8 +45,9 @@ body{
 
 </style>
 
-</head>
- function toggleDarkMode(){
+<script>
+
+function toggleDarkMode(){
 
     document.body.classList.toggle('dark-mode');
 
@@ -53,38 +67,39 @@ window.onload = function(){
     }
 
 };
+
+</script>
+
+</head>
+
 <body>
 
-<h1>🏆 Quadrangular 2026 George</h1>
+<h1>🏆 Tournament Results Archive</h1>
 
-<p>Date: 15 July 2026</p>
+<button onclick="toggleDarkMode()">
+    🌙 Dark Mode
+</button>
 
-<h2>🏆 Final Team Standings</h2>
+<p>
+Browse past tournament results.
+</p>
 
-<table border="1" cellpadding="5" cellspacing="0">
+<div class="card">
 
-<tr>
-    <th>Place</th>
-    <th>Team</th>
-</tr>
+    <strong>Quadrangular 2026 George</strong><br>
 
-<tr><td>1</td><td>Mosselbaai B</td></tr>
-<tr><td>2</td><td>Mosselbaai A</td></tr>
-<tr><td>3</td><td>Pacaltsdorp A</td></tr>
-<tr><td>4</td><td>Conville Knights A</td></tr>
-<tr><td>5</td><td>Wilderness A</td></tr>
-<tr><td>6</td><td>George U-Knighted A</td></tr>
-<tr><td>7</td><td>Conville Knights B</td></tr>
-<tr><td>8</td><td>Pacaltsdorp B</td></tr>
-<tr><td>9</td><td>George U-Knighted B</td></tr>
-<tr><td>10</td><td>Conville Knights C</td></tr>
+    Date: 15 July 2026<br><br>
 
-</table>
+    <a href="quadrangular-2026-george.html">
+        📄 View Results
+    </a>
+
+</div>
 
 <br>
 
-<a href="results.html">
-    ← Back to Results Archive
+<a href="index.html">
+    ← Return to Home Page
 </a>
 
 </body>
