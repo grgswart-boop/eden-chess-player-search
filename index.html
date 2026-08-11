@@ -279,6 +279,25 @@ fetch('players.csv')
         });
 
         return player;
+// Statistics Dashboard
+
+const totalPlayers = players.length;
+
+const fidePlayers = players.filter(
+    p => p.FIDE_ID && p.FIDE_ID.trim() !== ''
+).length;
+
+const schools = new Set(
+    players
+        .map(p => p["School/Club"])
+        .filter(Boolean)
+);
+
+document.getElementById('stats').innerHTML = `
+    <strong>♟️ Total Players:</strong> ${totalPlayers}<br><br>
+    <strong>🏫 Schools/Clubs:</strong> ${schools.size}<br><br>
+    <strong>🌍 Players with FIDE IDs:</strong> ${fidePlayers}
+`;
 
     });
     // Statistics Dashboard
