@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Statistics</title>
+<title>Eden Chess Statistics</title>
 
 <style>
 
@@ -26,6 +26,21 @@ body{
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#f2f2f2;
+}
+
 .dark-mode{
     background:#121212;
     color:white;
@@ -34,6 +49,20 @@ body{
 .dark-mode .card{
     background:#1f1f1f;
     border:1px solid #444;
+    color:white;
+}
+
+.dark-mode th{
+    background:#2d2d2d;
+}
+
+.dark-mode td,
+.dark-mode th{
+    border:1px solid #444;
+}
+
+.dark-mode a{
+    color:#4da3ff;
 }
 
 </style>
@@ -43,6 +72,10 @@ body{
 <body>
 
 <h1>📊 Eden Chess Statistics</h1>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
 
 <div id="stats" class="card">
 Loading statistics...
@@ -55,6 +88,25 @@ Loading statistics...
 </a>
 
 <script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
 
 fetch('players.csv')
 .then(response => response.text())
@@ -78,16 +130,19 @@ fetch('players.csv')
 
     });
 
-    // Total Players
+    // Total players
+
     const totalPlayers = players.length;
 
-    // Count FIDE players
+    // FIDE players
+
     const fidePlayers = players.filter(player =>
         player.FIDE_ID &&
         player.FIDE_ID.trim() !== ''
     ).length;
 
-    // Count unique Schools/Clubs
+    // Schools / Clubs
+
     const schools = new Set();
 
     players.forEach(player => {
@@ -97,6 +152,46 @@ fetch('players.csv')
         if(school && school.trim() !== ''){
             schools.add(school.trim());
         }
+
+    });
+
+    // Count players per school
+
+    const schoolCounts = {};
+
+    players.forEach(player => {
+
+        const school = player["School/Club"];
+
+        if(school && school.trim() !== ''){
+
+            if(!schoolCounts[school]){
+                schoolCounts[school] = 0;
+            }
+
+            schoolCounts[school]++;
+
+        }
+
+    });
+
+    // Top 10 Schools
+
+    const topSchools = Object.entries(schoolCounts)
+    .sort((a,b) => b[1] - a[1])
+    .slice(0,10);
+
+    let topSchoolsHTML = '';
+
+    topSchools.forEach((school,index) => {
+
+        topSchoolsHTML += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${school[0]}</td>
+                <td>${school[1]}</td>
+            </tr>
+        `;
 
     });
 
@@ -117,6 +212,30 @@ fetch('players.csv')
             <h1>${schools.size}</h1>
         </div>
 
+        <div class="card">
+
+            <h2>🏆 Top 10 Schools / Clubs</h2>
+
+            <table>
+
+                <tr>
+                    <th>Rank</th>
+                    <th>School / Club</th>
+                    <th>Players</th>
+                </tr>
+
+                ${topSchoolsHTML}
+
+            </table>
+
+        </div>
+
     `;
 
 });
+
+</script>
+
+</body>
+
+</html>
