@@ -300,18 +300,7 @@ document.getElementById('stats').innerHTML = `
 `;
 
     });
-    // Statistics Dashboard
-
-const totalPlayers = players.length;
-
-const fidePlayers = players.filter(
-    p => p.FIDE_ID && p.FIDE_ID.trim() !== ''
-).length;
-
-const schools = new Set(
-    players
-        .map(p => p["School/Club"])
-        .filter(Boolean)
+    
 );
 
 document.getElementById('stats').innerHTML = `
