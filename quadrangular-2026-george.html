@@ -10,7 +10,23 @@
 
 <style>
 
-  button{
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
     padding:8px 12px;
     margin-top:5px;
     margin-right:5px;
@@ -23,13 +39,6 @@
 
 button:hover{
     background:#004c99;
-}
-  
-body{
-    font-family:Arial,sans-serif;
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
 }
 
 table{
@@ -55,6 +64,12 @@ a{
 
 .dark-mode{
     background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
     color:white;
 }
 
@@ -93,9 +108,7 @@ function toggleDarkMode(){
 window.onload = function(){
 
     if(localStorage.getItem('darkMode') === 'true'){
-
         document.body.classList.add('dark-mode');
-
     }
 
 };
@@ -109,17 +122,18 @@ window.onload = function(){
 <h1>🏆 Quadrangular 2026 George</h1>
 
 <button onclick="toggleDarkMode()">
-    🌙 Dark Mode
+🌙 Dark Mode
 </button>
 
 <p>Date: 15 July 2026</p>
-    <div class="card">
+
+<div class="card">
 
     <strong>Official Tournament Information</strong>
 
     <br><br>
 
-    <button onclick="window.open(https://s1.chess-results.com/tnr1457327.aspx?lan=1">
+    <button onclick="window.open('https://s1.chess-results.com/tnr1457327.aspx?lan=1','_blank')">
         ♟️ Official Chess-Results
     </button>
 
@@ -128,7 +142,6 @@ window.onload = function(){
     </button>
 
 </div>
-
 
 <h2>🏆 Final Team Standings</h2>
 
@@ -155,8 +168,10 @@ window.onload = function(){
 <br>
 
 <a href="results.html">
-    ← Back to Results Archive
+← Back to Results Archive
 </a>
 
 </body>
+
 </html>
+
