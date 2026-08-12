@@ -164,6 +164,21 @@ Chess Players in Eden is an unofficial resource that helps players, parents, coa
 
   
 <br><br>
+<select id="filter">
+    <option value="all">All Fields</option>
+    <option value="name">Name</option>
+    <option value="school">School/Club</option>
+    <option value="chessa">ChessaID</option>
+    <option value="fide">FIDE ID</option>
+</select>
+select{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+<br><br>
   
 <input
 id="search"
@@ -271,9 +286,39 @@ document.getElementById('search').addEventListener('keyup', function(){
 
     }
 
-    const matches = players.filter(player =>
-        JSON.stringify(player).toLowerCase().includes(term)
-    );
+    const filter = document.getElementById('filter').value;
+
+const matches = players.filter(player => {
+
+    if(filter === 'name'){
+        return (player.DisplayName || '')
+        .toLowerCase()
+        .includes(term);
+    }
+
+    if(filter === 'school'){
+        return (player["School/Club"] || '')
+        .toLowerCase()
+        .includes(term);
+    }
+
+    if(filter === 'chessa'){
+        return (player.ChessaID || '')
+        .toLowerCase()
+        .includes(term);
+    }
+
+    if(filter === 'fide'){
+        return (player.FIDE_ID || '')
+        .toLowerCase()
+        .includes(term);
+    }
+
+    return JSON.stringify(player)
+    .toLowerCase()
+    .includes(term);
+
+});
 
     document.getElementById('counter').innerHTML =
         '♟️ ' + matches.length + ' player(s) found';
