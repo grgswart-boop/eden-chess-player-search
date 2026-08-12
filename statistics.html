@@ -104,7 +104,10 @@ window.onload = function(){
 
     if(localStorage.getItem('darkMode') === 'true'){
         document.body.classList.add('dark-mode');
-    
+    }
+
+};
+
 fetch('players.csv')
 .then(response => response.text())
 .then(text => {
@@ -127,32 +130,14 @@ fetch('players.csv')
 
     });
 
-    // Total players
-
     const totalPlayers = players.length;
-
-    // FIDE players
 
     const fidePlayers = players.filter(player =>
         player.FIDE_ID &&
         player.FIDE_ID.trim() !== ''
     ).length;
 
-    // Schools / Clubs
-
     const schools = new Set();
-
-    players.forEach(player => {
-
-        const school = player["School/Club"];
-
-        if(school && school.trim() !== ''){
-            schools.add(school.trim());
-        }
-
-    });
-
-    // Count players per school
 
     const schoolCounts = {};
 
@@ -162,17 +147,14 @@ fetch('players.csv')
 
         if(school && school.trim() !== ''){
 
-            if(!schoolCounts[school]){
-                schoolCounts[school] = 0;
-            }
+            schools.add(school.trim());
 
-            schoolCounts[school]++;
+            schoolCounts[school] =
+                (schoolCounts[school] || 0) + 1;
 
         }
 
     });
-
-    // Top 10 Schools
 
     const topSchools = Object.entries(schoolCounts)
     .sort((a,b) => b[1] - a[1])
@@ -183,15 +165,14 @@ fetch('players.csv')
     topSchools.forEach((school,index) => {
 
         topSchoolsHTML += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${school[0]}</td>
-                <td>${school[1]}</td>
-            </tr>
+        <tr>
+            <td>${index + 1}</td>
+            <td>${school[0]}</td>
+            <td>${school[1]}</td>
+        </tr>
         `;
-    });
 
-    // Birth Year Statistics
+    });
 
     const birthYearCounts = {};
 
@@ -201,11 +182,8 @@ fetch('players.csv')
 
         if(year && year.trim() !== ''){
 
-            if(!birthYearCounts[year]){
-                birthYearCounts[year] = 0;
-            }
-
-            birthYearCounts[year]++;
+            birthYearCounts[year] =
+                (birthYearCounts[year] || 0) + 1;
 
         }
 
@@ -219,76 +197,95 @@ fetch('players.csv')
     sortedBirthYears.forEach(year => {
 
         birthYearHTML += `
-            <tr>
-                <td>${year[0]}</td>
-                <td>${year[1]}</td>
-            </tr>
+        <tr>
+            <td>${year[0]}</td>
+            <td>${year[1]}</td>
+        </tr>
         `;
 
     });
 
-    const largestGroup = Object.entries(birthYearCounts)
-    .sort((a,b) => b[1] - a[1])[0];
+    let largestGroupYear = 'N/A';
+    let largestGroupCount = 0;
+
+    Object.entries(birthYearCounts).forEach(([year,count]) => {
+
+        if(count > largestGroupCount){
+
+            largestGroupYear = year;
+            largestGroupCount = count;
+
+        }
+
+    });
 
     document.getElementById('stats').innerHTML = `
 
-        <div class="card">
-            <h2>♟️ Total Players</h2>
-            <h1>${totalPlayers}</h1>
-        </div>
+    <div class="card">
+        <h2>♟️ Total Players</h2>
+        <h1>${totalPlayers}</h1>
+    </div>
 
-        <div class="card">
-            <h2>🌍 Players with FIDE IDs</h2>
-            <h1>${fidePlayers}</h1>
-        </div>
+    <div class="card">
+        <h2>🌍 Players with FIDE IDs</h2>
+        <h1>${fidePlayers}</h1>
+    </div>
 
-        <div class="card">
-            <h2>🏫 Schools / Clubs</h2>
-            <h1>${schools.size}</h1>
-        </div>
+    <div class="card">
+        <h2>🏫 Schools / Clubs</h2>
+        <h1>${schools.size}</h1>
+    </div>
 
-        <div class="card">
-            <h2>🎂 Largest Age Group</h2>
-            <h1>${largestGroup ? largestGroup[0] : '-'}</h1>
-            <p>${largestGroup ? largestGroup[1] + ' players' : ''}</p>
-        </div>
+    <div class="card">
+        <h2>🎂 Largest Birth Year Group</h2>
+        <h1>${largestGroupYear}</h1>
+        <p>${largestGroupCount} players</p>
+    </div>
 
-        <div class="card">
+    <div class="card">
 
-            <h2>🏆 Top 10 Schools / Clubs</h2>
+        <h2>🏆 Top 10 Schools / Clubs</h2>
 
-            <table>
+        <table>
 
-                <tr>
-                    <th>Rank</th>
-                    <th>School / Club</th>
-                    <th>Players</th>
-                </tr>
+            <tr>
+                <th>Rank</th>
+                <th>School / Club</th>
+                <th>Players</th>
+            </tr>
 
-                ${topSchoolsHTML}
+            ${topSchoolsHTML}
 
-            </table>
+        </table>
 
-        </div>
+    </div>
 
-        <div class="card">
+    <div class="card">
 
-            <h2>📅 Players by Birth Year</h2>
+        <h2>📅 Players by Birth Year</h2>
 
-            <table>
+        <table>
 
-                <tr>
-                    <th>Birth Year</th>
-                    <th>Players</th>
-                </tr>
+            <tr>
+                <th>Birth Year</th>
+                <th>Players</th>
+            </tr>
 
-                ${birthYearHTML}
+            ${birthYearHTML}
 
-            </table>
+        </table>
 
-        </div>
+    </div>
 
     `;
+
+})
+.catch(error => {
+
+    document.getElementById('stats').innerHTML =
+    '<div class="card">❌ Error loading players.csv</div>';
+
+    console.error(error);
 
 });
 
@@ -297,3 +294,4 @@ fetch('players.csv')
 </body>
 
 </html>
+
