@@ -123,7 +123,9 @@ fetch('players.csv')
         let player = {};
 
         headers.forEach((header,index) => {
+
             player[header.trim()] = values[index];
+
         });
 
         return player;
@@ -141,6 +143,8 @@ fetch('players.csv')
 
     const schoolCounts = {};
 
+    const areaCounts = {};
+
     players.forEach(player => {
 
         const school = player["School/Club"];
@@ -150,7 +154,16 @@ fetch('players.csv')
             schools.add(school.trim());
 
             schoolCounts[school] =
-                (schoolCounts[school] || 0) + 1;
+            (schoolCounts[school] || 0) + 1;
+
+        }
+
+        const area = player.Area;
+
+        if(area && area.trim() !== ''){
+
+            areaCounts[area] =
+            (areaCounts[area] || 0) + 1;
 
         }
 
@@ -174,6 +187,23 @@ fetch('players.csv')
 
     });
 
+    const topAreas = Object.entries(areaCounts)
+    .sort((a,b) => b[1] - a[1]);
+
+    let topAreasHTML = '';
+
+    topAreas.forEach((area,index) => {
+
+        topAreasHTML += `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${area[0]}</td>
+            <td>${area[1]}</td>
+        </tr>
+        `;
+
+    });
+
     const birthYearCounts = {};
 
     players.forEach(player => {
@@ -183,7 +213,7 @@ fetch('players.csv')
         if(year && year.trim() !== ''){
 
             birthYearCounts[year] =
-                (birthYearCounts[year] || 0) + 1;
+            (birthYearCounts[year] || 0) + 1;
 
         }
 
@@ -237,6 +267,11 @@ fetch('players.csv')
     </div>
 
     <div class="card">
+        <h2>📍 Areas</h2>
+        <h1>${Object.keys(areaCounts).length}</h1>
+    </div>
+
+    <div class="card">
         <h2>🎂 Largest Birth Year Group</h2>
         <h1>${largestGroupYear}</h1>
         <p>${largestGroupCount} players</p>
@@ -255,6 +290,24 @@ fetch('players.csv')
             </tr>
 
             ${topSchoolsHTML}
+
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📍 Players by Area</h2>
+
+        <table>
+
+            <tr>
+                <th>Rank</th>
+                <th>Area</th>
+                <th>Players</th>
+            </tr>
+
+            ${topAreasHTML}
 
         </table>
 
