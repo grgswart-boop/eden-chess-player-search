@@ -201,6 +201,7 @@ Chess Players in Eden is an unofficial resource that helps players, parents, coa
     <option value="all">All Fields</option>
     <option value="name">Name</option>
     <option value="school">School / Club</option>
+    <option value="area">Area</option>
     <option value="chessa">ChessaID</option>
     <option value="fide">FIDE ID</option>
 </select>
@@ -330,6 +331,12 @@ const matches = players.filter(player => {
         .includes(term);
     }
 
+    if(filter === 'area'){
+    return (player.Area || '')
+    .toLowerCase()
+    .includes(term);
+    }
+
     if(filter === 'chessa'){
         return (player.ChessaID || '')
         .toLowerCase()
@@ -376,7 +383,9 @@ const matches = players.filter(player => {
 
                 FIDE ID: ${player.FIDE_ID || ''}<br>
 
-                School/Club: ${player["School/Club"] || ''}<br><br>
+                School/Club: ${player["School/Club"] || ''}<br>
+                
+                Area: ${player.Area || ''}<br><br>
 
                 <button onclick="copyText('${player.DisplayName}')">
                 👤 Copy Name
