@@ -10,37 +10,43 @@
 <style>
 
 body{
-    font-family:Arial,sans-serif;
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
 }
 
 .card{
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:15px;
-    margin-top:10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
 }
 
 a{
-    text-decoration:none;
-    color:#0066cc;
-    font-weight:bold;
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
 }
 
 .dark-mode{
-    background:#121212;
-    color:white;
+    background: #121212;
+    color: white;
 }
 
 .dark-mode .card{
-    background:#1e1e1e;
-    border:1px solid #444;
+    background: #1e1e1e;
+    border: 1px solid #444;
 }
 
 .dark-mode a{
-    color:#4da3ff;
+    color: #4da3ff;
+}
+
+button{
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 </style>
@@ -48,22 +54,18 @@ a{
 <script>
 
 function toggleDarkMode(){
-
     document.body.classList.toggle('dark-mode');
 
     localStorage.setItem(
         'darkMode',
         document.body.classList.contains('dark-mode')
     );
-
 }
 
 window.onload = function(){
 
     if(localStorage.getItem('darkMode') === 'true'){
-
         document.body.classList.add('dark-mode');
-
     }
 
 };
@@ -85,25 +87,21 @@ Browse past tournament results.
 </p>
 
 <div class="card">
-
     <strong>Quadrangular 2026 George</strong><br>
-
     Date: 15 July 2026<br><br>
 
     <a href="quadrangular-2026-george.html">
         📄 View Results
     </a>
+</div>
 
-    <div class="card">
-
+<div class="card">
     <strong>Quadrangular 2026 Wilderness</strong><br>
-
     Date: 15 July 2026<br><br>
 
-    <a href="quadrangular-2026-george.html">
+    <aadrangular-2026-wilderness.html
         📄 View Results
     </a>
-
 </div>
 
 <br>
