@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WCSC -    </title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:8px 12px;
+    margin-top:5px;
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    background:#0066cc;
+    color:white;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+a{
+    text-decoration:none;
+    color:#0066cc;
+    font-weight:bold;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+    color:white;
+}
+
+.dark-mode table{
+    color:white;
+}
+
+.dark-mode th{
+    background:#1e1e1e;
+}
+
+.dark-mode td,
+.dark-mode th{
+    border:1px solid #444;
+}
+
+.dark-mode a{
+    color:#4da3ff;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
+
+</script>
+
+</head>
+
+<body>
+
+<h1>🏆 WCSC - Kings and Queens 2026 Kings</h1>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+<p>Date: 15 August 2026</p>
+
+<div class="card">
+
+<strong>Official Tournament Information</strong>
+
+<br><br>
+
+<button onclick="window.open('https://s2.chess-results.com/tnr1476579.aspx?lan=1', '_blank')">
+    ♟️ Official Chess-Results ♔ Kings
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s3.chess-results.com/tnr1476578.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results ♕ Queens
+</button>
+
+<br><br>
+
+<button onclick="window.print()">
+    🖨️ Print Results
+</button>
+   
+</div>
+
+<h2>🏆 Final Team Standings ♔ Kings</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Team</th>
+    </tr>
+
+    <tr><td>1</td><td>Eden A</td></tr>
+    <tr><td>2</td><td>Cape Winelands</td></tr>
+    <tr><td>3</td><td>Eden B</td></tr>
+    <tr><td>4</td><td>West Coast A</td></tr>
+</table>
+
+<h2>🏆 Final Team Standings ♕ Queens</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Team</th>
+    </tr>
+
+    <tr><td>1</td><td>Cape Winelands</td></tr>
+    <tr><td>2</td><td>Eden A</td></tr>
+    <tr><td>3</td><td>Eden B</td></tr>
+    <tr><td>4</td><td>West Coast</td></tr>
+	
+</table>
+
+<br>
+
+<a href="results.html">
+← Back to Results Archive
+</a>
+
+</body>
+
+</html>

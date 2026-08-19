@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WCSC -    </title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:8px 12px;
+    margin-top:5px;
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    background:#0066cc;
+    color:white;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+a{
+    text-decoration:none;
+    color:#0066cc;
+    font-weight:bold;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+    color:white;
+}
+
+.dark-mode table{
+    color:white;
+}
+
+.dark-mode th{
+    background:#1e1e1e;
+}
+
+.dark-mode td,
+.dark-mode th{
+    border:1px solid #444;
+}
+
+.dark-mode a{
+    color:#4da3ff;
+}
+
+.medals{
+    display:flex;
+    gap:15px;
+    margin:15px 0;
+    flex-wrap:wrap;
+}
+
+.medal{
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:15px;
+    border-radius:10px;
+    font-weight:bold;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.gold{
+    background:#ffd700;
+    color:#333;
+}
+
+.silver{
+    background:#c0c0c0;
+    color:#333;
+}
+
+.bronze{
+    background:#cd7f32;
+    color:white;
+}
+
+.count{
+    display:block;
+    font-size:2em;
+    margin-top:5px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.subtitle{
+    color:#888;
+    font-size:1.1em;
+    margin-top:-10px;
+}
+
+.event-date{
+    text-align:center;
+    font-size:1.1em;
+    margin-bottom:20px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+.button-area{
+    text-align:center;
+    margin-top:20px;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+    <h1>🏆 Brian Raubenheimer Development 2026</h1>
+    <p class="subtitle">
+        Western Cape Chess Development Tournament
+    </p>
+</header>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+</p>
+
+<div class="event-date">
+    📅 15 August 2026
+</div>
+
+<div class="card">
+
+<h2>📋 Official Tournament Information</h2>
+
+<div class="medals">
+    <div class="medal gold">
+        🥇 Gold
+        <span class="count">5</span>
+    </div>
+
+    <div class="medal silver">
+        🥈 Silver
+        <span class="count">3</span>
+    </div>
+
+    <div class="medal bronze">
+        🥉 Bronze
+        <span class="count">26</span>
+    </div>
+</div>
+
+<h2 style="text-align:center;">🏅 Medal Tally</h2>
+<p style="text-align:center;font-size:1.2em;">
+    <strong>Total Medals: 34</strong>
+</p>
+
+<br><br>
+
+<div class="button-area">
+
+    <button onclick="window.open('https://s1.chess-results.com/tnr1476623.aspx?lan=1&art=0&SNode=S0', '_blank')">
+        ♟️ Official Chess Results
+    </button>
+
+    <br><br>
+
+    <button onclick="window.print()">
+        🖨️ Print Results
+    </button>
+
+</div>
+
+<br>
+
+<a href="results.html">
+← Back to Results Archive
+</a>
+
+</body>
+
+</html>
