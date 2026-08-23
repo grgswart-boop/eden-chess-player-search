@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WCSC - Eden Blitz Championship 2026</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.subtitle{
+    color: #888;
+    font-size: 1.1em;
+    margin-top: -10px;
+}
+
+.event-date{
+    text-align:center;
+    font-size:1.1em;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.cards-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card{
+    flex: 1 1 300px;
+    min-width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding: 8px 12px;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #0066cc;
+    color: white;
+}
+
+button:hover{
+    background: #004c99;
+}
+
+a{
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.medals{
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.medal{
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.gold{
+    background: #ffd700;
+    color: #333;
+}
+
+.silver{
+    background: #c0c0c0;
+    color: #333;
+}
+
+.bronze{
+    background: #cd7f32;
+    color: white;
+}
+
+.button-area{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Dark Mode */
+
+.dark-mode{
+    background: #121212;
+    color: white;
+}
+
+.dark-mode .card{
+    background: #1f1f1f;
+    border: 1px solid #444;
+    color: white;
+}
+
+.dark-mode a{
+    color: #4da3ff;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+}
+
+window.onload = function(){
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+};
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+    <h1>🏆 Eden Blitz Championship 2026</h1>
+    <p class="subtitle">
+        Western Cape Chess Development Tournament
+    </p>
+</header>
+
+<div style="text-align:center;">
+    <button onclick="toggleDarkMode()">
+        🌙 Dark Mode
+    </button>
+</div>
+
+<div class="event-date">
+    📅 22 August 2026
+</div>
+
+<div class="cards-container">
+
+    <!-- OPEN SECTION -->
+    <div class="card">
+
+        <h2>📋 Open Section</h2>
+
+        <div class="medals">
+            <div class="medal gold">🥇 Raynier Claassen</div>
+            <div class="medal silver">🥈 Reuben Daniels</div>
+            <div class="medal bronze">🥉 Gideon Louw </div>
+        </div>
+
+        <div class="button-area">
+            <button onclick="window.open('https://s3.chess-results.com/tnr1479948.aspx?lan=1&art=1&rd=11&turdet=YES&SNode=S0','_blank')">
+                ♟️ Official Results
+            </button>
+
+            <button onclick="window.print()">
+                🖨️ Print Results
+            </button>
+        </div>
+
+    </div>
+
+    <!-- B SECTION -->
+    <div class="card">
+
+        <h2>📋 B Section</h2>
+
+        <div class="medals">
+            <div class="medal gold">🥇 Eugeniel Jacobs</div>
+            <div class="medal silver">🥈 Alexandria Tebe</div>
+            <div class="medal bronze">🥉 Sivuyisile Bukula</div>
+        </div>
+
+        <div class="button-area">
+            <button onclick="window.open('https://s3.chess-results.com/tnr1479950.aspx?lan=1&art=1&rd=11&SNode=S0','_blank')">
+                ♟️ Official Results
+            </button>
+
+            <button onclick="window.print()">
+                🖨️ Print Results
+            </button>
+        </div>
+
+    </div>
+
+    <!-- C SECTION -->
+    <div class="card">
+
+        <h2>📋 C Section</h2>
+
+        <div class="medals">
+            <div class="medal gold">🥇 Bryan Marner</div>
+            <div class="medal silver">🥈 Lukas Driessen</div>
+            <div class="medal bronze">🥉 Alexander Pringle</div>
+        </div>
+
+        <div class="button-area">
+            <button onclick="window.open('https://s3.chess-results.com/tnr1479951.aspx?lan=1&art=1&rd=11&SNode=S0','_blank')">
+                ♟️ Official Results
+            </button>
+
+            <button onclick="window.print()">
+                🖨️ Print Results
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<a href="results.html">
+    ← Back to Results Archive
+</a>
+
+</body>
+</html>
