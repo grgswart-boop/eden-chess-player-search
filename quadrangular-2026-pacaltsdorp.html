@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Quadrangular 2026 Pacaltsdorp</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:8px 12px;
+    margin-top:5px;
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    background:#0066cc;
+    color:white;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+a{
+    text-decoration:none;
+    color:#0066cc;
+    font-weight:bold;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+    color:white;
+}
+
+.dark-mode table{
+    color:white;
+}
+
+.dark-mode th{
+    background:#1e1e1e;
+}
+
+.dark-mode td,
+.dark-mode th{
+    border:1px solid #444;
+}
+
+.dark-mode a{
+    color:#4da3ff;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
+
+</script>
+
+</head>
+
+<body>
+
+<h1>🏆 Quadrangular 2026 Pacaltsdorp</h1>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+<p>Date: 2 September 2026</p>
+
+<div class="card">
+
+    <strong>Official Tournament Information</strong>
+
+    <br><br>
+
+    <button onclick="window.open('https://s3.chess-results.com/tnr1488751.aspx?lan=1&SNode=S0')">
+        ♟️ Official Chess-Results
+    </button>
+
+    <button onclick="window.print()">
+        🖨️ Print Results
+    </button>
+
+</div>
+
+<h2>🏆 Final Team Standings</h2>
+
+<table>
+
+<tr>
+    <th>Place</th>
+    <th>Team</th>
+</tr>
+
+<tr><td>1</td><td>Mosselbaai A</td></tr>
+<tr><td>2</td><td>Conville Knights A</td></tr>
+<tr><td>3</td><td>Pacaltsdorp A</td></tr>
+<tr><td>4</td><td>Wilderness A</td></tr>
+<tr><td>5</td><td>Conville Knights B</td></tr>
+<tr><td>6</td><td>George U-Knighted A</td></tr>
+<tr><td>7</td><td>George U-Knighted B</td></tr>
+<tr><td>8</td><td>Conville Knights C</td></tr>
+<tr><td>9</td><td>Pacaltsdorp B</td></tr>
+
+</table>
+
+<br>
+
+<a href="results.html">
+← Back to Results Archive
+</a>
+
+</body>
+
+</html>
