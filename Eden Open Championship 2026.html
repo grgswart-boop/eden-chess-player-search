@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WCSC -    </title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-top:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:8px 12px;
+    margin-top:5px;
+    margin-right:5px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    background:#0066cc;
+    color:white;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+a{
+    text-decoration:none;
+    color:#0066cc;
+    font-weight:bold;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1f1f1f;
+    border:1px solid #444;
+    color:white;
+}
+
+.dark-mode table{
+    color:white;
+}
+
+.dark-mode th{
+    background:#1e1e1e;
+}
+
+.dark-mode td,
+.dark-mode th{
+    border:1px solid #444;
+}
+
+.dark-mode a{
+    color:#4da3ff;
+}
+
+</style>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle('dark-mode');
+
+    localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+    );
+
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark-mode');
+    }
+
+};
+
+</script>
+
+</head>
+
+<body>
+
+<h1>🏆 PACS Rapid 2026</h1>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+<p>Date: 29 August 2026</p>
+
+<div class="card">
+
+<strong>Official Tournament Information</strong>
+
+<br><br>
+
+<button onclick="window.open('https://s3.chess-results.com/tnr1498325.aspx?lan=1&turdet=YES&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results Prestige
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s2.chess-results.com/tnr1498323.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results B - Section
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s1.chess-results.com/tnr1498324.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results C - Section
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s3.chess-results.com/tnr1498322.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results Woman - Section
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s3.chess-results.com/tnr1498321.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results U14 - Section
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s2.chess-results.com/tnr1498320.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results U12 - Section
+</button>
+
+<br><br>
+
+<button onclick="window.open('https://s1.chess-results.com/tnr1498319.aspx?lan=1&art=0&SNode=S0', '_blank')">
+    ♟️ Official Chess-Results U10 - Section
+</button>
+
+<br><br>
+
+<button onclick="window.print()">
+    🖨️ Print Results
+</button>
+   
+</div>
+
+<h2>🏆 Final Standings Prestige</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Nevin - Tyler William</td></tr>
+    <tr><td>2</td><td>Claassen - Raynier</td></tr>
+    <tr><td>3</td><td>Taute - Clayden</td></tr>
+</table>
+
+<h2>🏆 Final Standings B - Section</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Jantjies - Keaton</td></tr>
+    <tr><td>2</td><td>Jantjies - Jason</td></tr>
+    <tr><td>3</td><td>Oktober - Jayson</td></tr>
+	
+</table>
+
+<h2>🏆 Final Standings C - Section</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Muller - Kieran</td></tr>
+    <tr><td>2</td><td>Jacobs - Eugeniel</td></tr>
+    <tr><td>3</td><td>Roberts - Iwan</td></tr>
+	
+</table>
+
+<h2>🏆 Final Standings Woman - Section</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Swart - Sune</td></tr>
+    <tr><td>2</td><td>Blignaut - Dane</td></tr>
+    <tr><td>3</td><td>Nomdo - Monique</td></tr>
+	
+</table>
+
+<h2>🏆 Final Standings U14</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Roelf - Wildren</td></tr>
+    <tr><td>2</td><td>Copley - Murray</td></tr>
+    <tr><td>3</td><td>Opukiri - Judah</td></tr>
+	
+</table>
+
+</table>
+
+<h2>🏆 Final Standings U12</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Duthie - Conlan</td></tr>
+    <tr><td>2</td><td>Olckers - Nezlee</td></tr>
+    <tr><td>3</td><td>Amsterdam - Meagan</td></tr>
+	
+</table>
+
+</table>
+
+<h2>🏆 Final Standings U10</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+    </tr>
+
+    <tr><td>1</td><td>Petersen - Bryson</td></tr>
+    <tr><td>2</td><td>Rens - Deauwin</td></tr>
+    <tr><td>3</td><td>Rens - Beauwin</td></tr>
+	
+</table>
+
+<br>
+
+<a href="results.html">
+← Back to Results Archive
+</a>
+
+</body>
+
+</html>
+
